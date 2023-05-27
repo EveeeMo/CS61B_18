@@ -1,7 +1,7 @@
-public class NBody{
-    
+public class NBody {
+
     public static double readRadius(String d) {
-        //read the radius with the filename provided
+        // read the radius with the filename provided
         In in = new In(d);
         double number = in.readDouble();
         double radius = in.readDouble();
@@ -31,20 +31,22 @@ public class NBody{
         return allPlanets;
     }
 
-
-
     public static void main(String[] args) {
+        // if (args.length != 3) { //如果用户输入的参数少了，或者多了，入口不让进
+        //     return;
+        // }
+        
         Double T = Double.parseDouble(args[0]);
         Double dt = Double.parseDouble(args[1]);
         String filename = args[2];
-
+        
         In in = new In(filename);
         int number = in.readInt();
         Planet[] allPlanets = readPlanets(filename);
         Double radius = readRadius(filename);
 
         String imageDraw = "images/starfield.jpg";
-        
+
         StdDraw.setScale(-radius, radius);
         StdDraw.clear();
 
@@ -60,8 +62,6 @@ public class NBody{
         }
 
         StdDraw.show();
-
-         StdDraw.show();
 
         // Animation.
         StdDraw.enableDoubleBuffering();
@@ -96,9 +96,9 @@ public class NBody{
 
             StdDraw.pause(10);
 
-            Time = Time + dt;
+            time = time + dt;
         }
-        //print out the final result.
+        // print out the final result.
         StdOut.printf("%d\n", allPlanets.length);
         StdOut.printf("%.2e\n", radius);
         for (int q = 0; q < allPlanets.length; q++) {
